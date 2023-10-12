@@ -3,11 +3,15 @@ package com.usermgmt.dao;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+
 
 import com.usermgmt.modal.User;
 
@@ -130,8 +134,45 @@ public class UserDao {
 	    return status;
 	}
 
-	
+	public static int updatePasswordByName(User e) {
+	    int status = 0;
+	    try {
+	        Connection con = UserDao.getConnection();
+	        PreparedStatement ps = con.prepareStatement("update userdetail set password=? where name=?");
+	        String password=e.getPassword();
+	    	 String encrptedpassword = null;
+			
+				encrptedpassword = UserDao.generateString(password);
+	        ps.setString(1, encrptedpassword);
+	        ps.setString(2, e.getName());
+	        status = ps.executeUpdate();
+	        con.close();
+	    } catch (Exception ex) {
+	        ex.printStackTrace();
+	    }
+	    return status;
+	}
+	 public static boolean isUserExists(User e) {
+	        boolean userExists = false;
+	        try {
+	            Connection con = getConnection();
 
+	            PreparedStatement ps = con.prepareStatement("SELECT COUNT(*) FROM userdetail WHERE email = ?");
+	            ps.setString(1, e.getEmail());
+
+	            ResultSet result = ps.executeQuery();
+	            if (result.next() && result.getInt(1) > 0) {
+	                userExists = true;
+	            }
+
+	            result.close();
+	            con.close();
+	        } catch (SQLException ex) {
+	            ex.printStackTrace();
+	        }
+	        return userExists;
+	    }
+	
 
 
 	public static int save(User e) {
@@ -267,7 +308,7 @@ public class UserDao {
 			
 		}
 	
-
+		
 //	public static List<User> getAllEmployees() {
 //		List<User> list = new ArrayList<User>();
 //

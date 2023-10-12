@@ -14,7 +14,7 @@
         <h1 class="text-center">Forget Password</h1>
         <div class="row justify-content-center mt-4">
             <div class="col-md-6">
-                <form action="ResetPasswordServlet" method="post">
+                <form action="forgetPasswordServlet" method="post">
                     <div class="form-group">
                         <label for="email">Email:</label>
                         <input type="email" id="email" name="email" class="form-control" required>
@@ -24,17 +24,7 @@
             </div>
         </div>
         
-        <% if(request.getAttribute("message")!=null) { %>
-        <div class="alert alert-success mt-4">
-            <%= request.getAttribute("message") %>
-        </div>
-        <% } %>
-        
-        <% if(request.getAttribute("error")!=null) { %>
-        <div class="alert alert-danger mt-4">
-            <%= request.getAttribute("error") %>
-        </div>
-        <% } %>
+       
     </div>
 
     <!-- Add Bootstrap JS and jQuery scripts here -->
@@ -43,4 +33,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 <%@ include file="footer.jsp" %>
-</html>
+</html> 
+
+

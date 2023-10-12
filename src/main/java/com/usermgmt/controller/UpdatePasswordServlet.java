@@ -25,7 +25,7 @@ public class UpdatePasswordServlet extends HttpServlet {
     	        String oldPassword = request.getParameter("oldPassword");
     	        String newPassword = request.getParameter("newPassword");
 
-    	        // Create a User object with the provided name and old password
+    	        // Create a User object with the provided name and old password 
     	        User user = new User();
     	        user.setName(username);
     	        user.setPassword(oldPassword);
@@ -43,31 +43,20 @@ public class UpdatePasswordServlet extends HttpServlet {
     	            	
     	                response.sendRedirect("passwordUpdateSuccess.jsp");
     	                System.out.println(updateStatus);
-    	            } else {
-    	               
-    	            	// Invalid old password, redirect to an error page or display an error message
-    	            	 request.setAttribute("error2", "<font color=red size=3>Invalid old password!!<br>");
-    	                 
-    	              	RequestDispatcher rd=request.getRequestDispatcher("updatePassword.jsp");  
-    	                  rd.forward(request, response); 
-        	        	//request.setAttribute("error3", "<font color=red size=3>Invalid old password!!<br>");
-    	            	System.out.println("fggmbv");
-    	                
-    	             	
-    	               // response.sendRedirect("updatePassword.jsp");
-    	            }
-    	        } else {
-    	        	// Password update failed, redirect to an error page or display an error message
+    	            }}
+   	           
+    	         else {
+    	        	// Invalid old password, redirect to an error page or display an error message
 	            	 request.setAttribute("error3", "<font color=red size=3>Invalid old password!!!<br>");
 	                 
  	              	RequestDispatcher rd=request.getRequestDispatcher("updatePassword.jsp");  
  	                  rd.forward(request, response); 
-	            	//request.setAttribute("error2", "<font color=red size=3>Password update failed<br>");
+	            	
     	        	System.out.println("fggmbv1");
-    	           // response.sendRedirect("updatePassword.jsp");
+    	          
     	        }
     	    }
-    	}
+    }
 
 
 

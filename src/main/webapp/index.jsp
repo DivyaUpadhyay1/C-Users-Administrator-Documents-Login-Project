@@ -56,16 +56,17 @@
 										<p>Please login to your account</p>
 
 										<div class="form-group required">
+										
 											<lSabel for="name"> Enter your Name </lSabel>
 											<input type="text" id="name" required="" name="name" value="">
 										</div>
 										<div class="form-group required">
 											<label class="d-flex flex-row align-items-center"
 												for="password"> Enter your Password <a
-												class="ml-auto border-link small-xl" href="forgetPassword.jsp"> Forget
+												class="ml-auto border-link small-xl" href="forget_password.jsp" > Forget
 													Password? </a>
 											</label> <input type="password" class="form-control" required=""
-												id="password" name="password" value="">
+												id="password" name="password" value=""><button type="button" onclick="togglePassword('password')" class="btn btn-sm btn-secondary">Show Password</button>
 										</div>
 
 										<div class="text-center pt-1 mb-5 pb-1">
@@ -111,6 +112,16 @@
 <%if(request.getAttribute("error")!=null){
 	out.print(request.getAttribute("error"));}
 	%>
+	
+	<script>
+	function togglePassword(inputId) {
+        var input = document.getElementById(inputId);
+        if (input.type === "password") {
+            input.type = "text";
+        } else {
+            input.type = "password";
+        }
+    }</script>
 </body>
 
 <%@ include file="footer.jsp" %>
