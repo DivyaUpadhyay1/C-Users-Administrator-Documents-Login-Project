@@ -9,11 +9,11 @@ public class Token {
     private String token;
     
 
-    public Token(String email, String token) {
-        this.email = email;
-        this.token = token;
-        
-    }
+//    public Token(String email, String token) {
+//        this.email = email;
+//        this.token = token;
+//        
+//    }
 
 	public String getEmail() {
 		return email;

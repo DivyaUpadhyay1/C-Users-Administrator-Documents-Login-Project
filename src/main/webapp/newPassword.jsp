@@ -104,6 +104,9 @@
 	<script type='text/javascript'
 		src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js'></script>
 	
+	<%if(request.getAttribute("success")!=null){
+	out.print(request.getAttribute("success"));}
+	%>
 </body>
 <%@ include file="footer.jsp" %>
 </html>

@@ -51,7 +51,9 @@ public class ForgetPassword1 extends HttpServlet {
 //         Date expirationDate = new Date(System.currentTimeMillis() + 3600000); // 3600000 milliseconds = 1 hour
 
          // Save the token in the database
-         Token tokenObject = new Token(email, token);
+         Token tokenObject = new Token();
+         tokenObject.setEmail(email);
+         tokenObject.setToken(token);
          TokenDao.saveToken(tokenObject);
 
          // Send the token to the user (via email or any other method)

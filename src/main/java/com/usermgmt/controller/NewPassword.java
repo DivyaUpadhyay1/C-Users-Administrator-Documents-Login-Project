@@ -41,7 +41,7 @@ public class NewPassword extends HttpServlet {
 
 	        if (updateStatus > 0) {
 	            request.setAttribute("status1", "resetSuccess");
-	            dispatcher = request.getRequestDispatcher("forgotPassword.jsp");
+	            dispatcher = request.getRequestDispatcher("passwordUpdateSuccess.jsp");
 	        } else {
 	            request.setAttribute("status", "resetFailed");
 	            dispatcher = request.getRequestDispatcher("forgotPassword.jsp");

@@ -8,48 +8,58 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit User</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Update Employee</h1>
-    <%
-        String sid = request.getParameter("id");
-        int id = Integer.parseInt(sid);
-        User user = UserDao.getEmployeeById(id); // Fetch the user by ID
-    %>
+    <div class="container">
+        <h1 class="mt-4">Update Employee</h1>
+        <%
+            String sid = request.getParameter("id");
+            int id = Integer.parseInt(sid);
+            User user = UserDao.getEmployeeById(id); // Fetch the user by ID
+        %>
 
-    <form action="EditServlet2" method="post">
-        <input type="hidden" name="id" value="<%= user.getId() %>">
-        <table>
-            <tr>
-                <td>Name:</td>
-                <td><input type="text" name="name" value="<%= user.getName() %>"></td>
-            </tr>
-            <tr>
-                <td>Password:</td>
-                <td><input type="password" name="password" value="<%= user.getPassword() %>"></td>
-            </tr>
-            <tr>
-                <td>Email:</td>
-                <td><input type="email" name="email" value="<%= user.getEmail() %>"></td>
-            </tr>
-            <tr>
-                <td>Country:</td>
-                <td>
-                    <select name="country" style="width:150px">
-                        <option>India</option>
-                        <option>USA</option>
-                        <option>UK</option>
-                        <option>Other</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <input type="submit" value="Edit & Save">
-                </td>
-            </tr>
-        </table>
-    </form>
+        <form action="EditServlet2" method="post">
+            <input type="hidden" name="id" value="<%= user.getId() %>">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" value="<%= user.getName() %>">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" value="<%= user.getPassword() %>">
+                <button type="button" onclick="togglePassword('password')" class="btn btn-sm btn-secondary">Show Password</button>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" value="<%= user.getEmail() %>">
+            </div>
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <select class="form-control" id="country" name="country">
+                    <option>India</option>
+                    <option>USA</option>
+                    <option>UK</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Edit & Save</button>
+        </form>
+    </div>
+
+    <!-- Include Bootstrap JS (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </body>
+
 <%@ include file="footer.jsp" %>
+<script>
+	function togglePassword(inputId) {
+        var input = document.getElementById(inputId);
+        if (input.type === "password") {
+            input.type = "text";
+        } else {
+            input.type = "password";
+        }
+    }</script>
 </html>

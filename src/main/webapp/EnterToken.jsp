@@ -45,6 +45,16 @@
 
 								<form id="register-form" action="ValidateToken" role="form" autocomplete="off"
 									class="form" method="post">
+									
+									
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon"><i
+												class="glyphicon glyphicon-envelope color-blue"></i></span> <input
+												id="email" name="email" placeholder="Enter email"
+												class="form-control" type="text" required="required">
+										</div>
+									</div>
 
 									<div class="form-group">
 										<div class="input-group">
