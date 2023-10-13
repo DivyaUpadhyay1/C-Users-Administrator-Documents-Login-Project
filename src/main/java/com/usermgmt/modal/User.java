@@ -1,10 +1,41 @@
 package com.usermgmt.modal;
 
+import java.security.Timestamp;
+import java.util.Date;
+
 public class User {
 
 	 
 		private int id;  
-		private String name,password,email,country;  
+		private String name,password,email,country ;
+		private String token;
+	    private Date expirationDate;
+		
+	   
+	   
+
+	    
+
+	    
+
+		
+
+		public String getToken() {
+			return token;
+		}
+
+		public void setToken(String token) {
+			this.token = token;
+		}
+
+		public Date getExpirationDate() {
+			return expirationDate;
+		}
+
+		public void setExpirationDate(Date expirationDate) {
+			this.expirationDate = expirationDate;
+		}
+
 		public int getId() {  
 		    return id;  
 		}  
